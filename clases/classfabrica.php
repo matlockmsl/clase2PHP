@@ -1,40 +1,68 @@
 <?php
+//require_once "classpersona.php";
 
-require_once "classpersona.php";
 class Fabrica
 {
-	private _razonSocial;
-	private _empleados;
+	protected $_razonSocial;
+	private $_empleados;
 
 	public function __construct($rsocial)
 	{
 		$this->_razonSocial=$rsocial;
-		$this->_empleados=new array();
+		$this->_empleados=array();
 
 	}
 
-	public function AgregarPersona($p)
-{
-	array_push(this->_empleados);
-}
-
-public function ToString()
-{
-	return parent::ToString()."sasasasa";
-}
-}
-
-public function CalcularSalarios()
-{
+	public function AgregarEmpleado($p)
+	{
+	array_push($this->_empleados,$p);
+	}
 
 
-}
-public function SacarPersona()
-{
+	public function CalcularSueldos()
+	{
+	// 	$sas=array_column($this->_empleados,0);
+	// 	print_r($sas);
 
-}
-private function EvitarDuplicados()
-{
+	// echo "<br/> ss".array_sum($this->_empleados);
+	$sum=0;
+	$arraylength=count($this->_empleados);
+	//echo "".$arraylength;
+	
+	for ($i=0; $i <$arraylength ; $i++) { 
+		$sum+=$this->_empleados[$i]->getSueldo();
+	}
+	echo "Sueldos de la Fabrica: ".$sum;
+
+	}
+	public function EliminarEmpleado($p)
+	{
+
+		$arraylength=count($this->_empleados);
+		for ($i=0; $i < $arraylength; $i++) { 
+			if($this->_empleados[$i]->getLegajo())
+			{
+				unset($this->_empleados[$i]);
+				break;
+
+			}
+		}
+		
+	}
+	private function EliminarEmpleadosRepetidos()
+	{
+
+	}
+	public function ToString()
+	{
+		foreach ($this->_empleados as $value) 
+		{
+			echo $value->ToString();
+		}
+		//print_r(array_values($this->_empleados));
+
+	}
+
 
 }
 ?>

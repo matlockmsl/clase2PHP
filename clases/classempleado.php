@@ -1,31 +1,43 @@
 <?php
 require_once "classpersona.php";
+require_once "classempleado.php";
 
 class Empleado extends Persona
 {
-private $_legajo;
-private $_sueldo;
+protected $_legajo;
+protected $_sueldo;
 
-public function __construct($nom,$ape,$dni,$legajo,$sueldo)
-{
-	parent::__construct();
-	$this->_legajo=legajo;
-	$this->_sueldo=sueldo;
+	public function __construct($nom,$ape,$dni,$sexo,$legajo,$sueldo)
+	{
+		parent::__construct($nom,$ape,$dni,$sexo);
+		$this->_legajo=$legajo;
+		$this->_sueldo=$sueldo;
 
-}
-public function getLegajo()
-{
-	$this->_legajo;
-}
-public function getSueldo()
-{
-	$this->_sueldo;
-}
+	}
+	//METODOS GETTERS
+	public function getLegajo()
+	{
+		return $this->_legajo;
+	}
+	public function getSueldo()
+	{
+		return $this->_sueldo;
+	}
+	// public function setSueldo()
+	// {
+	// 	$t	
+	// }
 
-public function ToString()
-{
-	return parent::ToString()." - ".$this->_legajo." - ".$this->_sueldo;
-}
+	public function Hablar()
+	{
+		return "El empleado habla Español";
+
+	}
+
+	public function ToString()
+	{
+		return parent::ToString()."<br />Legajo: ".$this->_legajo."<br />Sueldo: ".$this->_sueldo."<br />";
+	}
 }
 
 ?>

@@ -1,16 +1,18 @@
 <?php
 
-class Persona
+abstract class Persona
 {
 	private $_nombre;
 	private $_apellido;
 	private $_dni;
+	private $_sexo;
 
-	public function __construct($nom,$ape,$dni)
+	public function __construct($nom,$ape,$dni,$sexo)
 	{
 		$this->_nombre=$nom;
 		$this->_apellido=$ape;
 		$this->_dni=$dni;
+		$this->_sexo=$sexo;
 
 	}
 	//METODOS GETTERS
@@ -26,7 +28,12 @@ class Persona
 	{
 		return $this->_dni;
 	}
+	public function getSexo()
+	{
+		return $this->_sexo;
+	}
 	//METODOS SETTERS
+	/*
 	public function setNombre()
 	{
 
@@ -40,11 +47,12 @@ class Persona
 	{
 		$this->_dni=9999;
 	}
-
+	*/	
+	abstract public function Hablar();
 	//METODO TOSTRING
 	public function ToString()
 	{
-		return $this->_nombre." - ".$this->_apellido." - ".$this->_dni;
+		return "Nombre: ".$this->_nombre."<br />Apellido: ".$this->_apellido."<br />Dni: ".$this->_dni;
 
 	}
 
